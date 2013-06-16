@@ -3453,6 +3453,11 @@ class TestMaskedFields(TestCase):
         assert_equal_records(a[-2]._data, a._data[-2])
         assert_equal_records(a[-2]._mask, a._mask[-2])
 
+    def test_element_len(self):
+        # check that len() works for mvoid (Github issue #576)
+        for rec in self.data['base']:
+            assert_equal(len(rec), len(self.data['ddtype']))
+
 #------------------------------------------------------------------------------
 
 class TestMaskedView(TestCase):
